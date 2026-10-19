@@ -2,7 +2,7 @@
 
 Research code for an audio-only framework that combines neural, local-difference, and static readouts of frozen pretrained speech representations.
 
-[Method](#method) · [Installation](#installation) · [Reproduction](#reproduction) · [Data](docs/DATA.md) · [Implementation](docs/METHOD.md) · [Exploratory extension](docs/EVENT_EXTENSION.md) · [Validation](docs/VALIDATION.md)
+[Main results](#main-results-table-ii) · [Method](#method) · [Installation](#installation) · [Reproduction](#reproduction) · [Data](docs/DATA.md) · [Implementation](docs/METHOD.md) · [Exploratory extension](docs/EVENT_EXTENSION.md) · [Validation](docs/VALIDATION.md)
 
 ## Overview
 
@@ -27,6 +27,58 @@ flowchart LR
     S --> F
     F --> P[Participant-level probabilities]
 ```
+
+## Main results (Table II)
+
+Table II reports participant-level classification on the PROCESS-2 test set (40 HC and 40 CI), using original recordings and all-task white Gaussian noise at 20 dB SNR.
+
+- **Improved classification across three encoders.** The full framework achieves the highest reported AUC, Macro-F1, and balanced accuracy among the four listed branch configurations for every encoder under both evaluation conditions.
+- **Gains over the neural-only configuration.** On original recordings, AUC increases by 0.0600–0.0938, with seven additional correct predictions per encoder. Under all-task noise, the full framework makes 12, 9, and 14 additional correct predictions for WavLM, Whisper, and wav2vec 2.0, respectively.
+
+![Table II. Classification performance of the neural, local-difference, combined, and full configurations across three frozen speech encoders on original and noisy PROCESS-2 test recordings.](assets/table_ii.png)
+
+<details>
+<summary>View Table II values as text</summary>
+
+**(a) Original recordings**
+
+| Encoder | Configuration | AUC | Macro-F1 | BA (%) | Gcorr |
+|---|---|---:|---:|---:|---:|
+| WavLM Base | N | 0.8100 | 0.7250 | 72.50 | 0 |
+| WavLM Base | Δ | 0.8613 | 0.7872 | 78.75 | +5 |
+| WavLM Base | N + Δ | 0.8550 | 0.7749 | 77.50 | +4 |
+| WavLM Base | **Full (N + Δ + S)** | **0.8700** | **0.8125** | **81.25** | **+7** |
+| Whisper Small | N | 0.7969 | 0.7088 | 71.25 | 0 |
+| Whisper Small | Δ | 0.8531 | 0.7744 | 77.50 | +5 |
+| Whisper Small | N + Δ | 0.8781 | 0.7848 | 78.75 | +6 |
+| Whisper Small | **Full (N + Δ + S)** | **0.8800** | **0.7980** | **80.00** | **+7** |
+| wav2vec 2.0 Base | N | 0.7787 | 0.6992 | 70.00 | 0 |
+| wav2vec 2.0 Base | Δ | 0.8506 | 0.7744 | 77.50 | +6 |
+| wav2vec 2.0 Base | N + Δ | 0.8562 | 0.7737 | 77.50 | +6 |
+| wav2vec 2.0 Base | **Full (N + Δ + S)** | **0.8725** | **0.7867** | **78.75** | **+7** |
+
+**(b) All-task white Gaussian noise, SNR = 20 dB**
+
+| Encoder | Configuration | AUC | Macro-F1 | BA (%) | Gcorr |
+|---|---|---:|---:|---:|---:|
+| WavLM Base | N | 0.6913 | 0.5033 | 53.75 | 0 |
+| WavLM Base | Δ | 0.7781 | 0.6154 | 65.00 | +9 |
+| WavLM Base | N + Δ | 0.7900 | 0.5442 | 60.00 | +5 |
+| WavLM Base | **Full (N + Δ + S)** | **0.8300** | **0.6688** | **68.75** | **+12** |
+| Whisper Small | N | 0.8013 | 0.6875 | 70.00 | 0 |
+| Whisper Small | Δ | 0.8237 | 0.7744 | 77.50 | +6 |
+| Whisper Small | N + Δ | 0.8888 | 0.7714 | 77.50 | +6 |
+| Whisper Small | **Full (N + Δ + S)** | **0.8900** | **0.8111** | **81.25** | **+9** |
+| wav2vec 2.0 Base | N | 0.7294 | 0.5231 | 56.25 | 0 |
+| wav2vec 2.0 Base | Δ | 0.6644 | 0.6020 | 61.25 | +4 |
+| wav2vec 2.0 Base | N + Δ | 0.7631 | 0.6533 | 67.50 | +9 |
+| wav2vec 2.0 Base | **Full (N + Δ + S)** | **0.8031** | **0.7279** | **73.75** | **+14** |
+
+Bold indicates the highest value within each condition, encoder, and metric. Gcorr is the net increase in correct predictions over N for the same encoder and condition.
+
+</details>
+
+N, Δ, and S denote the neural, local-difference, and static CTD branches. N uses original-only training; Δ/S use paired training with CTD-only 20-dB noise. Trained components, fusion settings, and the 0.5 decision threshold remain fixed across test conditions. These are the manuscript's fixed-split results; release validation is documented [separately](docs/VALIDATION.md).
 
 ## Method
 
@@ -173,18 +225,6 @@ docs/               Method, data, reproducibility, and validation notes
 tests/              Dataset-free numerical and protocol tests
 examples/           Synthetic event intervals
 ```
-
-## Manuscript reference results
-
-The following values identify the manuscript's historical fixed-split experiments. They are reference values, not results from the synthetic smoke test.
-
-| Encoder | Original AUC | Original Macro-F1 | All-task 20-dB AUC | All-task 20-dB Macro-F1 |
-|---|---:|---:|---:|---:|
-| WavLM Base | 0.8700 | 0.8125 | 0.8300 | 0.6688 |
-| Whisper Small | 0.8800 | 0.7980 | 0.8900 | 0.8111 |
-| wav2vec 2.0 Base | 0.8725 | 0.7867 | 0.8031 | 0.7279 |
-
-These rows report the full framework; they do not establish superiority over every statistical baseline. Fresh training can differ across devices and dependency builds. Release validation and its scope are documented [here](docs/VALIDATION.md).
 
 ## Citation and licensing
 
