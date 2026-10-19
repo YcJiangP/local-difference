@@ -1,4 +1,4 @@
-"""Build an allowlisted source archive without data-derived artifacts."""
+"""Build a source archive with approved documentation assets and no participant data."""
 
 import argparse
 import ast
@@ -13,7 +13,8 @@ TOP_FILES = {
     "README.md", "LICENSE", "NOTICE.md", "pyproject.toml", "requirements.txt",
     ".gitignore", ".gitattributes",
 }
-TOP_DIRECTORIES = {"src", "docs", "tests", "examples", "scripts", ".github"}
+TOP_DIRECTORIES = {"src", "docs", "tests", "examples", "scripts", ".github", "assets"}
+DOCUMENTATION_ASSETS = {"assets/table_ii.png"}
 FORBIDDEN_SUFFIXES = {
     ".wav", ".flac", ".mp3", ".pt", ".pth", ".bin", ".safetensors",
     ".npz", ".npy", ".joblib", ".pkl", ".pickle", ".pdf",
@@ -34,6 +35,14 @@ def source_files():
             raise ValueError(f"External or symbolic-link target: {relative}")
         if path.suffix.lower() in FORBIDDEN_SUFFIXES:
             raise ValueError(f"Non-source artifact in release tree: {relative}")
+        if relative.parts[0] == "assets":
+            if relative.as_posix() not in DOCUMENTATION_ASSETS:
+                raise ValueError(f"Unapproved documentation asset: {relative}")
+            payload = path.read_bytes()
+            if not payload.startswith(b"\x89PNG\r\n\x1a\n") or len(payload) > 5_000_000:
+                raise ValueError(f"Invalid documentation PNG: {relative}")
+            files.append(path)
+            continue
         content = path.read_text(encoding="utf-8")
         for expression, reason in (
             (r"PROCESS-2_rec__\d+", "clinical participant identifier"),
@@ -59,12 +68,13 @@ def main():
     if output.is_relative_to(ROOT.resolve()) or output.suffix.lower() != ".zip":
         raise ValueError("Write a .zip archive outside the repository directory.")
     files = source_files()
-    required = [ROOT / name for name in TOP_FILES]
+    required = [ROOT / name for name in TOP_FILES | DOCUMENTATION_ASSETS]
     if not all(path in files for path in required):
         raise ValueError("Missing required release metadata.")
     manifest = {
         "format": 1, "package": "local-temporal-speech-ci", "version": "0.1.0",
         "license": "MIT", "source_only": True,
+        "documentation_assets": sorted(DOCUMENTATION_ASSETS),
         "files": [
             {
                 "path": path.relative_to(ROOT).as_posix(), "bytes": path.stat().st_size,
