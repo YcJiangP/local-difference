@@ -1,0 +1,174 @@
+{
+  "initialization": [
+    {
+      "encoder": "wavlm",
+      "seed": 42,
+      "forward_error": 0.0,
+      "gradient_error": 0.0
+    },
+    {
+      "encoder": "wavlm",
+      "seed": 123,
+      "forward_error": 0.0,
+      "gradient_error": 0.0
+    },
+    {
+      "encoder": "wavlm",
+      "seed": 2026,
+      "forward_error": 0.0,
+      "gradient_error": 0.0
+    },
+    {
+      "encoder": "whisper_small_multi",
+      "seed": 42,
+      "forward_error": 0.0,
+      "gradient_error": 0.0
+    },
+    {
+      "encoder": "whisper_small_multi",
+      "seed": 123,
+      "forward_error": 0.0,
+      "gradient_error": 0.0
+    },
+    {
+      "encoder": "whisper_small_multi",
+      "seed": 2026,
+      "forward_error": 0.0,
+      "gradient_error": 0.0
+    },
+    {
+      "encoder": "wav2vec2",
+      "seed": 42,
+      "forward_error": 0.0,
+      "gradient_error": 0.0
+    },
+    {
+      "encoder": "wav2vec2",
+      "seed": 123,
+      "forward_error": 0.0,
+      "gradient_error": 0.0
+    },
+    {
+      "encoder": "wav2vec2",
+      "seed": 2026,
+      "forward_error": 0.0,
+      "gradient_error": 0.0
+    },
+    {
+      "classes": 3,
+      "seed": 42,
+      "forward_error": 0.0,
+      "gradient_error": 0.0
+    },
+    {
+      "classes": 3,
+      "seed": 123,
+      "forward_error": 0.0,
+      "gradient_error": 0.0
+    },
+    {
+      "classes": 3,
+      "seed": 2026,
+      "forward_error": 0.0,
+      "gradient_error": 0.0
+    }
+  ],
+  "trained_checkpoints": [
+    {
+      "encoder": "wavlm",
+      "seed_probability_error": 0.0,
+      "fused_error": 0.0
+    },
+    {
+      "encoder": "whisper_small_multi",
+      "seed_probability_error": 0.0,
+      "fused_error": 0.0
+    },
+    {
+      "encoder": "wav2vec2",
+      "seed_probability_error": 0.0,
+      "fused_error": 0.0
+    }
+  ],
+  "objectives": [
+    {
+      "classes": 2,
+      "loss_error": 0.0,
+      "gradient_error": 0.0
+    },
+    {
+      "classes": 3,
+      "loss_error": 0.0,
+      "gradient_error": 0.0
+    }
+  ],
+  "descriptors": [
+    {
+      "encoder": "wavlm",
+      "errors": {
+        "mean": 0.0,
+        "std": 0.0,
+        "delta": 0.0
+      },
+      "five_shuffle_permutations": "exact"
+    },
+    {
+      "encoder": "whisper_small_multi",
+      "errors": {
+        "mean": 0.0,
+        "std": 0.0,
+        "delta": 0.0
+      },
+      "five_shuffle_permutations": "exact"
+    },
+    {
+      "encoder": "wav2vec2",
+      "errors": {
+        "mean": 0.0,
+        "std": 0.0,
+        "delta": 0.0
+      },
+      "five_shuffle_permutations": "exact"
+    }
+  ],
+  "extraction": [
+    {
+      "encoder": "wavlm",
+      "synthetic_seconds": 12.7,
+      "errors": {
+        "features": 0.0,
+        "starts": 0.0,
+        "ends": 0.0,
+        "token_counts": 0.0
+      }
+    },
+    {
+      "encoder": "whisper_small_multi",
+      "synthetic_seconds": 12.7,
+      "errors": {
+        "features": 0.0,
+        "starts": 0.0,
+        "ends": 0.0,
+        "token_counts": 0.0
+      }
+    },
+    {
+      "encoder": "wav2vec2",
+      "synthetic_seconds": 12.7,
+      "errors": {
+        "features": 0.0,
+        "starts": 0.0,
+        "ends": 0.0,
+        "token_counts": 0.0
+      }
+    }
+  ],
+  "participant_split": "exact 256/64 identities; no identities exported",
+  "status": "passed",
+  "trained_threeclass_checkpoint": {
+    "seeds": 3,
+    "participants_checked": 4,
+    "seed_probability_error": 0.0,
+    "fused_probability_error": 0.0
+  }
+}

@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools==79.0.1", "wheel==0.45.1"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "local-temporal-speech-ci"
+version = "0.1.0"
+description = "Frozen speech readouts with local temporal differences and paired consistency"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.10,<3.13"
+dependencies = [
+  "numpy==2.2.6",
+  "scipy==1.13.1",
+  "scikit-learn==1.6.1",
+  "joblib==1.5.3",
+  "torch==2.9.1",
+  "transformers==4.35.2",
+  "huggingface-hub==0.35.3",
+  "safetensors==0.6.2",
+  "tokenizers==0.15.2",
+  "threadpoolctl==3.6.0",
+]
+
+[project.scripts]
+speech-ci = "speech_ci.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools]
+package-dir = {"" = "src"}

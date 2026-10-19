@@ -1,0 +1,184 @@
+{
+  "format": 1,
+  "package": "local-temporal-speech-ci",
+  "version": "0.1.0",
+  "license": "MIT",
+  "source_only": true,
+  "files": [
+    {
+      "path": ".gitattributes",
+      "bytes": 102,
+      "sha256": "95ad2c1af788bbcbde1d79c87942e2257a1939105a308200f80216c2b45a65ba"
+    },
+    {
+      "path": ".github/workflows/tests.yml",
+      "bytes": 687,
+      "sha256": "c6cc772c4365ead25fcd7b04b6bd3349aa3468754d3c5e6e6c2107e4ea74f16f"
+    },
+    {
+      "path": ".gitignore",
+      "bytes": 381,
+      "sha256": "e0536d4ae1db86bcacfba04c8885ebc48af114d19f20bf9a6ebba2fb75a85ef2"
+    },
+    {
+      "path": "docs/DATA.md",
+      "bytes": 2694,
+      "sha256": "e5b31c9d307a1e40b4e04ec3cc5c2042dfe3d554bdaa127810d5a270ded36474"
+    },
+    {
+      "path": "docs/EVENT_EXTENSION.md",
+      "bytes": 3977,
+      "sha256": "802942f39cdfd13442001b77d8888c547a523fc8001ffb37dbc1998e1722415c"
+    },
+    {
+      "path": "docs/METHOD.md",
+      "bytes": 5543,
+      "sha256": "4d1cb797113663a308117dcef4b095d52b929f49584d447ce3f92fc08343e5b9"
+    },
+    {
+      "path": "docs/reference_parity.json",
+      "bytes": 3579,
+      "sha256": "0d4ad71dda04b84379b25fb8997c098ce7ca48cb745fe1877865c52da98f2567"
+    },
+    {
+      "path": "docs/REPRODUCIBILITY.md",
+      "bytes": 4072,
+      "sha256": "d86ed33ee687d04d505c3d037d7bc8c1e3fd84121d55b5bb0972d1fa8e22e5d5"
+    },
+    {
+      "path": "docs/VALIDATION.md",
+      "bytes": 2769,
+      "sha256": "fae726eedce63a2ea11c87190c0f39e478823db8b35e022db8d8c3098c21494f"
+    },
+    {
+      "path": "examples/synthetic_events.json",
+      "bytes": 300,
+      "sha256": "874b284da4dd41d1bc31634c9eda823539f175390d5e029de20e8db4d4c5f2ec"
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 1076,
+      "sha256": "66ad00bf2773c38b525a1629dd888ec3c3eb147b1f44ecb30f8b5b16d93f01ff"
+    },
+    {
+      "path": "NOTICE.md",
+      "bytes": 977,
+      "sha256": "a74bacf8436bcbcc20b736c9610350afba65f67779ccdada6de90fa32d86290d"
+    },
+    {
+      "path": "pyproject.toml",
+      "bytes": 755,
+      "sha256": "fe5bc7edf18960ea0096ca4aac214962f3d7b65d1729f4d59c9a11703039b838"
+    },
+    {
+      "path": "README.md",
+      "bytes": 10733,
+      "sha256": "26f151ef560dfe3e4a85b482015639966d734c4007772e8b53a32036c4b18d30"
+    },
+    {
+      "path": "requirements.txt",
+      "bytes": 178,
+      "sha256": "f0640bb9e546e07a0619bd679290e44eaf7aea5d4445d3c282612f2132708f61"
+    },
+    {
+      "path": "scripts/package_release.py",
+      "bytes": 3571,
+      "sha256": "9a9ec4507fe8500dff674a5393e8c5111a95f9e1aec53c08b5fdfb458e87d4f8"
+    },
+    {
+      "path": "src/speech_ci/__init__.py",
+      "bytes": 91,
+      "sha256": "fbd3aafacaedb4985acea7a502a90fa7b27e69e8ce278b7cbf2b0a15ef41c7ea"
+    },
+    {
+      "path": "src/speech_ci/__main__.py",
+      "bytes": 30,
+      "sha256": "6d8b7d7846a845059d7a3107143f11131f63c5511d669b44085b15ec5e3d2279"
+    },
+    {
+      "path": "src/speech_ci/audio.py",
+      "bytes": 1670,
+      "sha256": "469e07b2a8e4d7bb597ec19ee9a45a790c5363b297f583d4f2e85806e096b0f9"
+    },
+    {
+      "path": "src/speech_ci/cli.py",
+      "bytes": 6364,
+      "sha256": "aa2691c05d76bbd302d5b77b0d53abfdc88302c77010a7dd840bc90597eb4b1d"
+    },
+    {
+      "path": "src/speech_ci/config.py",
+      "bytes": 794,
+      "sha256": "2ca70519ba17647818f8a36c7144529bfdafc9f98f4e764cd295b8ef57e2f628"
+    },
+    {
+      "path": "src/speech_ci/data.py",
+      "bytes": 5324,
+      "sha256": "6c35c398afd9b413587a11e40ed4629745f38f77883ad473dbf5c30fb7609b34"
+    },
+    {
+      "path": "src/speech_ci/descriptors.py",
+      "bytes": 3907,
+      "sha256": "0687966cc1ffc3f1ac1166ba78213d35cba68d295f4cac995ecbfd30b3c5423b"
+    },
+    {
+      "path": "src/speech_ci/encoding.py",
+      "bytes": 7545,
+      "sha256": "28e666e9e7d50293fe8721b331a1470c14128c1107a24a870214446c5fd7cf9e"
+    },
+    {
+      "path": "src/speech_ci/event_heads.py",
+      "bytes": 3428,
+      "sha256": "cafdd9f1d272ec9b76e5d737c86a1c987939b8db59e332f3c0ff665a0cdf2cea"
+    },
+    {
+      "path": "src/speech_ci/events.py",
+      "bytes": 3511,
+      "sha256": "3ec2ed3e55e94746b34c73fffcb702c2e0cc4c51a95690ddcd3219736741899f"
+    },
+    {
+      "path": "src/speech_ci/fusion.py",
+      "bytes": 2219,
+      "sha256": "bed4acb7848cce1b081bcbc7b02e7a1c9d584ae9c90084dc52b11c982e827420"
+    },
+    {
+      "path": "src/speech_ci/heads.py",
+      "bytes": 6242,
+      "sha256": "77ef8149ea4f16a731db2d66555876fed07f5a189458ca5d9a28e783a0c06e60"
+    },
+    {
+      "path": "src/speech_ci/io.py",
+      "bytes": 1311,
+      "sha256": "e0d97768ae5259a7822e333a2fc7f98eb89962d5c62d0df5066d406292aad5fa"
+    },
+    {
+      "path": "src/speech_ci/metrics.py",
+      "bytes": 4198,
+      "sha256": "e582095955ebde51a88c9e97c41e6eadfd671aaa3c35824bc2709e644685020a"
+    },
+    {
+      "path": "src/speech_ci/models.py",
+      "bytes": 5133,
+      "sha256": "d0945e94c1ec74dc5dcf019bafb02395b7fbc8e7792abd16a0ab25dab14be0a9"
+    },
+    {
+      "path": "src/speech_ci/pipeline.py",
+      "bytes": 15403,
+      "sha256": "b63d02efb50307e0e3c6feea6147ab2d168d7617c759934a6192ac28f7e8befb"
+    },
+    {
+      "path": "src/speech_ci/smoke.py",
+      "bytes": 2870,
+      "sha256": "9ed85c86138f311df43e92002d6e402a6f00b41fc41e752b047ef0fcd15a4e79"
+    },
+    {
+      "path": "tests/test_data.py",
+      "bytes": 1795,
+      "sha256": "02e3127e98f931db7e9f38096db36967dce53dc835178c21f332a99fe2f5dfca"
+    },
+    {
+      "path": "tests/test_numerics.py",
+      "bytes": 7533,
+      "sha256": "dcc16bfe25d3fafe3ed039de29bce6befb04536aa381f948de6fd7b048f838dd"
+    }
+  ]
+}
